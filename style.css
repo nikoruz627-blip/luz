@@ -1,6 +1,6 @@
-/* ==========================
+/* =========================================
    RESET
-========================== */
+========================================= */
 
 *{
     margin:0;
@@ -8,65 +8,159 @@
     box-sizing:border-box;
 }
 
-html,
-body{
-    width:100%;
-    min-height:100%;
-    font-family:'Poppins',sans-serif;
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    background:linear-gradient(135deg,#090909,#181818,#101010);
-    color:#fff;
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
     padding:40px 20px;
     overflow-x:hidden;
+    color:#fff;
+    background:#090909;
 }
 
-/* ==========================
+/* =========================================
    VARIABLES
-========================== */
+========================================= */
 
 :root{
-    --card:#1a1a1a;
-    --card-hover:#252525;
+
+    --bg:#090909;
+
+    --glass:rgba(20,20,20,.75);
+
     --border:rgba(255,255,255,.08);
-    --shadow:0 20px 40px rgba(0,0,0,.35);
-    --radius:24px;
-    --transition:.3s ease;
+
+    --text:#ffffff;
+
+    --text2:#c7c7c7;
+
+    --shadow:0 25px 60px rgba(0,0,0,.45);
+
+    --radius:28px;
+
+    --speed:.35s;
+
+}
+/* =========================================
+   FONDO PREMIUM
+========================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#8b5cf6;
+    filter:blur(180px);
+    opacity:.18;
+    top:-180px;
+    left:-120px;
+    z-index:-2;
+    animation:floatOne 12s ease-in-out infinite;
 }
 
-/* ==========================
-   CONTENEDOR
-========================== */
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:#ec4899;
+    filter:blur(180px);
+    opacity:.12;
+    bottom:-180px;
+    right:-120px;
+    z-index:-2;
+    animation:floatTwo 15s ease-in-out infinite;
+}
+
+@keyframes floatOne{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(60px,40px);
+    }
+
+}
+
+@keyframes floatTwo{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-50px,-30px);
+    }
+
+}
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
 
 .container{
     width:100%;
     max-width:430px;
-    background:rgba(18,18,18,.88);
-    backdrop-filter:blur(16px);
+
+    background:var(--glass);
+
     border:1px solid var(--border);
+
     border-radius:var(--radius);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
     box-shadow:var(--shadow);
+
     padding:40px 30px;
+
     text-align:center;
+
+    animation:fadeUp .8s ease;
 }
-/* ==========================
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+/* =========================================
    PERFIL
-========================== */
+========================================= */
 
 .profile-img{
     width:140px;
     height:140px;
-    border-radius:50%;
     object-fit:cover;
+    border-radius:50%;
+
+    display:block;
+    margin:0 auto 20px;
+
     border:4px solid rgba(255,255,255,.12);
-    margin-bottom:20px;
-    transition:var(--transition);
+
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+
+    transition:transform var(--speed);
 }
 
 .profile-img:hover{
@@ -77,17 +171,21 @@ h1{
     font-size:2rem;
     font-weight:700;
     margin-bottom:10px;
+    color:var(--text);
 }
 
 .bio{
-    color:#cfcfcf;
-    font-size:.95rem;
-    margin-bottom:35px;
+    max-width:300px;
+    margin:0 auto 35px;
+
+    color:var(--text2);
+
+    font-size:.96rem;
     line-height:1.6;
 }
-/* ==========================
+/* =========================================
    BOTONES
-========================== */
+========================================= */
 
 .links{
     display:flex;
@@ -98,114 +196,52 @@ h1{
 .link-btn{
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:12px;
+    gap:16px;
 
     width:100%;
-    padding:17px;
+    padding:14px;
 
     text-decoration:none;
-    color:#fff;
+    color:var(--text);
 
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
 
-    font-size:1rem;
-    font-weight:600;
+    transition:all var(--speed);
 
-    transition:var(--transition);
-}
-
-.link-btn i{
-    font-size:1.2rem;
+    overflow:hidden;
 }
 
 .link-btn:hover{
-    background:var(--card-hover);
-    transform:translateY(-4px);
-    box-shadow:0 15px 30px rgba(0,0,0,.35);
-}
-/* ==========================
-   ANIMACIONES + RESPONSIVE
-========================== */
-
-.container{
-    animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@media (max-width:480px){
-
-    body{
-        padding:20px 15px;
-    }
-
-    .container{
-        padding:30px 22px;
-    }
-
-    .profile-img{
-        width:115px;
-        height:115px;
-    }
-
-    h1{
-        font-size:1.7rem;
-    }
-
-    .bio{
-        font-size:.9rem;
-    }
-
-    .link-btn{
-        padding:15px;
-        font-size:.95rem;
-    }
-}
-/* ==========================
-   BOTONES CON IMAGEN
-========================== */
-
-.link-btn{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    text-align:left;
+    transform:translateY(-4px) scale(1.02);
+    background:rgba(255,255,255,.08);
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 }
 
 .link-image{
-    width:70px;
-    height:70px;
+    width:72px;
+    height:72px;
+
     object-fit:cover;
-    border-radius:14px;
+
+    border-radius:16px;
+
     flex-shrink:0;
 }
 
 .link-text{
     flex:1;
+    text-align:left;
 }
 
 .link-text h3{
-    margin:0;
     font-size:1.05rem;
+    margin-bottom:4px;
     color:#fff;
 }
 
 .link-text span{
-    display:block;
-    margin-top:4px;
     font-size:.88rem;
-    color:#bdbdbd;
+    color:var(--text2);
 }
