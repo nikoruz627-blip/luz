@@ -174,3 +174,38 @@ h1{
         font-size:.95rem;
     }
 }
+/* ==========================
+   BOTONES CON IMAGEN
+========================== */
+
+.link-btn{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    text-align:left;
+}
+
+.link-image{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:14px;
+    flex-shrink:0;
+}
+
+.link-text{
+    flex:1;
+}
+
+.link-text h3{
+    margin:0;
+    font-size:1.05rem;
+    color:#fff;
+}
+
+.link-text span{
+    display:block;
+    margin-top:4px;
+    font-size:.88rem;
+    color:#bdbdbd;
+}
