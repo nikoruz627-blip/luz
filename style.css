@@ -477,3 +477,32 @@ h1{
 .bio{
     opacity:.92;
 }
+/* =========================================
+   DETALLES FINALES
+========================================= */
+
+.link-btn{
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.10);
+}
+
+.link-btn:hover{
+    border-color:rgba(192,132,252,.45);
+}
+
+.link-image{
+    border:2px solid rgba(255,255,255,.08);
+}
+
+.link-text span{
+    transition:color .3s ease;
+}
+
+.link-btn:hover .link-text span{
+    color:#ffffff;
+}
+
+::selection{
+    background:#8b5cf6;
+    color:#fff;
+}
