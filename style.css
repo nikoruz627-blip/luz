@@ -11,11 +11,20 @@
 html,
 body{
     width:100%;
-    height:100%;
-    overflow-x:hidden;
+    min-height:100%;
     font-family:'Poppins',sans-serif;
-    background:#000;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#090909,#181818,#101010);
     color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:40px 20px;
+    overflow-x:hidden;
 }
 
 /* ==========================
@@ -23,126 +32,39 @@ body{
 ========================== */
 
 :root{
-    --bg:#0b0b0b;
-    --card:#151515;
-    --card-hover:#1d1d1d;
-    --text:#ffffff;
-    --text2:#bdbdbd;
+    --card:#1a1a1a;
+    --card-hover:#252525;
     --border:rgba(255,255,255,.08);
-    --shadow:0 10px 30px rgba(0,0,0,.35);
-    --radius:22px;
+    --shadow:0 20px 40px rgba(0,0,0,.35);
+    --radius:24px;
     --transition:.3s ease;
 }
-/* ==========================
-   FONDO
-========================== */
 
-body{
-    background:
-        radial-gradient(circle at top,#2a2a2a 0%,#111 40%,#000 100%);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:40px 20px;
-    position:relative;
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:rgba(255,255,255,.05);
-    filter:blur(120px);
-    top:-180px;
-    left:-120px;
-    animation:float1 12s ease-in-out infinite;
-    pointer-events:none;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:400px;
-    height:400px;
-    border-radius:50%;
-    background:rgba(255,255,255,.04);
-    filter:blur(120px);
-    bottom:-150px;
-    right:-120px;
-    animation:float2 15s ease-in-out infinite;
-    pointer-events:none;
-}
-
-@keyframes float1{
-    0%,100%{
-        transform:translate(0,0);
-    }
-    50%{
-        transform:translate(60px,40px);
-    }
-}
-
-@keyframes float2{
-    0%,100%{
-        transform:translate(0,0);
-    }
-    50%{
-        transform:translate(-50px,-40px);
-    }
-}
 /* ==========================
    CONTENEDOR
 ========================== */
 
 .container{
     width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.card{
-    width:100%;
     max-width:430px;
-    background:rgba(20,20,20,.88);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    background:rgba(18,18,18,.88);
+    backdrop-filter:blur(16px);
     border:1px solid var(--border);
     border-radius:var(--radius);
-    padding:40px 28px;
     box-shadow:var(--shadow);
+    padding:40px 30px;
     text-align:center;
-    animation:fadeUp .8s ease;
-}
-
-/* ==========================
-   ANIMACIÓN
-========================== */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 /* ==========================
    PERFIL
 ========================== */
 
 .profile-img{
-    width:130px;
-    height:130px;
+    width:140px;
+    height:140px;
     border-radius:50%;
     object-fit:cover;
-    border:4px solid rgba(255,255,255,.15);
+    border:4px solid rgba(255,255,255,.12);
     margin-bottom:20px;
     transition:var(--transition);
 }
@@ -155,14 +77,13 @@ h1{
     font-size:2rem;
     font-weight:700;
     margin-bottom:10px;
-    color:var(--text);
 }
 
 .bio{
-    color:var(--text2);
-    font-size:.96rem;
+    color:#cfcfcf;
+    font-size:.95rem;
+    margin-bottom:35px;
     line-height:1.6;
-    margin-bottom:30px;
 }
 /* ==========================
    BOTONES
@@ -171,7 +92,7 @@ h1{
 .links{
     display:flex;
     flex-direction:column;
-    gap:16px;
+    gap:18px;
 }
 
 .link-btn{
@@ -179,30 +100,51 @@ h1{
     align-items:center;
     justify-content:center;
     gap:12px;
+
     width:100%;
-    padding:16px 20px;
-    background:var(--card);
-    color:var(--text);
+    padding:17px;
+
     text-decoration:none;
-    border-radius:16px;
+    color:#fff;
+
+    background:var(--card);
     border:1px solid var(--border);
+    border-radius:18px;
+
     font-size:1rem;
     font-weight:600;
+
     transition:var(--transition);
+}
+
+.link-btn i{
+    font-size:1.2rem;
 }
 
 .link-btn:hover{
     background:var(--card-hover);
-    transform:translateY(-3px) scale(1.02);
-    box-shadow:0 12px 24px rgba(0,0,0,.35);
-}
-
-.link-btn i{
-    font-size:1.3rem;
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,.35);
 }
 /* ==========================
-   RESPONSIVE
+   ANIMACIONES + RESPONSIVE
 ========================== */
+
+.container{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
 @media (max-width:480px){
 
@@ -210,13 +152,13 @@ h1{
         padding:20px 15px;
     }
 
-    .card{
-        padding:30px 20px;
+    .container{
+        padding:30px 22px;
     }
 
     .profile-img{
-        width:110px;
-        height:110px;
+        width:115px;
+        height:115px;
     }
 
     h1{
